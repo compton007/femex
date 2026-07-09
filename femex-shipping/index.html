@@ -3,70 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Femex Shipping - Premium Logistics</title>
+    <title>Femex Shipping | Global Logistics USA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
-        header { background: #1e3a8a; padding: 1rem; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .tab { display: none; padding: 2rem; }
-        .tab.active { display: block; }
-        .nav-tabs button { padding: 10px 20px; margin: 5px; background: #334155; color: white; border: none; border-radius: 6px; cursor: pointer; }
-        .nav-tabs button.active { background: #3b82f6; }
+        :root {
+            --primary: #1e40af;
+            --dark: #0f172a;
+        }
+        body { margin:0; font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #1e2937; }
+        header { background: var(--dark); color: white; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 500; }
+        .hero { background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://picsum.photos/id/1015/1920/1080'); background-size: cover; color: white; text-align: center; padding: 6rem 1rem; }
+        .section { padding: 3rem 1rem; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem; margin: 1rem 0; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .admin-tab { display: none; }
+        .admin-tab.active { display: block; }
     </style>
 </head>
 <body>
     <header>
         <h1>FEMEX SHIPPING</h1>
         <nav>
-            <a href="#" onclick="showTab('public')">🏠 Public Site</a>
-            <a href="#" onclick="showTab('admin')">🔐 Admin Dashboard</a>
+            <a href="#track">Track</a>
+            <a href="#services">Services</a>
+            <a href="#admin" onclick="switchToAdmin()">Admin Portal</a>
         </nav>
     </header>
 
-    <!-- Public Site -->
-    <div id="public" class="tab active">
-        <h2 style="text-align:center;">Track Your Cargo</h2>
-        <input id="trackId" placeholder="Tracking Number" style="width:60%; padding:15px;">
-        <button onclick="trackShipment()">Track</button>
-        <div id="trackResult"></div>
+    <div class="hero">
+        <h1 style="font-size: 3.2rem;">Premium Cargo Logistics</h1>
+        <p>Sea • Air • Rail • Trucking • Nationwide USA</p>
     </div>
 
-    <!-- Admin Dashboard -->
-    <div id="admin" class="tab">
-        <h2>Admin Control Center</h2>
-        <div class="nav-tabs">
-            <button onclick="openAdminTab('dashboard')" class="active">Dashboard</button>
-            <button onclick="openAdminTab('shipments')">Shipment Manager</button>
-            <button onclick="openAdminTab('customers')">Customers</button>
-            <button onclick="openAdminTab('map')">Live Map</button>
-            <button onclick="openAdminTab('chat')">Live Chat</button>
-            <button onclick="openAdminTab('reports')">Reports</button>
-        </div>
-
-        <div id="admin-content">
-            <h3>Welcome to Femex Admin</h3>
-            <p>Logged in as Administrator</p>
-            <p>Password: oracleA1</p>
+    <div class="section" id="track">
+        <div class="card">
+            <h2>Shipment Tracking</h2>
+            <input id="trackInput" placeholder="Enter Tracking Number" style="width:70%; padding:15px; font-size:1.1rem;">
+            <button onclick="trackShipment()">Track Now</button>
+            <div id="trackOutput" style="margin-top:20px;"></div>
         </div>
     </div>
 
-    <script>
-        function showTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(tab).classList.add('active');
-        }
+    <!-- Admin Portal -->
+    <div id="adminPortal" style="display:none; background:#0f172a; color:white; min-height:100vh; padding:2rem;">
+        <h2>🔐 Admin Control Center</h2>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button onclick="showAdminSection('dashboard')">Dashboard</button>
+            <button onclick="showAdminSection('shipments')">Shipment Manager</button>
+            <button onclick="showAdminSection('customers')">Customers</button>
+            <button onclick="showAdminSection('map')">Live Map</button>
+            <button onclick="showAdminSection('chat')">Live Chat</button>
+            <button onclick="showAdminSection('reports')">Reports & Analytics</button>
+        </div>
+        <div id="adminContent" style="margin-top:2rem; background:#1e2937; padding:2rem; border-radius:12px;">
+            <h3>Welcome, Administrator</h3>
 
-        function openAdminTab(section) {
-            let content = `<h3>${section.charAt(0).toUpperCase() + section.slice(1)} Section</h3><p>Full functionality available in production version.</p>`;
-            if (section === 'map') content += '<p>🗺️ Live US Map with cargo locations (Demo)</p>';
-            if (section === 'chat') content += '<p>💬 24/7 Live Chat Support Active</p>';
-            document.getElementById('admin-content').innerHTML = content;
-        }
-
-        function trackShipment() {
-            const id = document.getElementById('trackId').value || "FMX-CHI-20260709";
-            document.getElementById('trackResult').innerHTML = `<div style="background:#1e3a8a;padding:20px;border-radius:8px;">Tracking ${id}<br>Status: Out for Delivery in Hemet, CA</div>`;
-        }
-    </script>
-</body>
-</html>
