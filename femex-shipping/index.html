@@ -1,44 +1,72 @@
-FemexShipping/
-│
-├── index.html
-├── tracking.html
-├── quote.html
-├── booking.html
-├── login.html
-├── dashboard.html
-│
-├── admin/
-│   ├── login.html
-│   ├── dashboard.html
-│   ├── shipments.html
-│   ├── customers.html
-│   ├── tracking.html
-│   ├── invoices.html
-│   ├── reports.html
-│   ├── analytics.html
-│   └── settings.html
-│
-├── assets/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   ├── videos/
-│   ├── icons/
-│   └── fonts/
-│
-├── server/
-│   ├── Node.js API
-│   ├── Authentication
-│   ├── Shipment API
-│   ├── Chat API
-│   ├── Email API
-│   ├── Database
-│   └── Admin API
-│
-└── database/
-    ├── users
-    ├── shipments
-    ├── invoices
-    ├── tracking
-    ├── payments
-    └── messages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Femex Shipping - Premium Logistics</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+        header { background: #1e3a8a; padding: 1rem; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .tab { display: none; padding: 2rem; }
+        .tab.active { display: block; }
+        .nav-tabs button { padding: 10px 20px; margin: 5px; background: #334155; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        .nav-tabs button.active { background: #3b82f6; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FEMEX SHIPPING</h1>
+        <nav>
+            <a href="#" onclick="showTab('public')">🏠 Public Site</a>
+            <a href="#" onclick="showTab('admin')">🔐 Admin Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Public Site -->
+    <div id="public" class="tab active">
+        <h2 style="text-align:center;">Track Your Cargo</h2>
+        <input id="trackId" placeholder="Tracking Number" style="width:60%; padding:15px;">
+        <button onclick="trackShipment()">Track</button>
+        <div id="trackResult"></div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin" class="tab">
+        <h2>Admin Control Center</h2>
+        <div class="nav-tabs">
+            <button onclick="openAdminTab('dashboard')" class="active">Dashboard</button>
+            <button onclick="openAdminTab('shipments')">Shipment Manager</button>
+            <button onclick="openAdminTab('customers')">Customers</button>
+            <button onclick="openAdminTab('map')">Live Map</button>
+            <button onclick="openAdminTab('chat')">Live Chat</button>
+            <button onclick="openAdminTab('reports')">Reports</button>
+        </div>
+
+        <div id="admin-content">
+            <h3>Welcome to Femex Admin</h3>
+            <p>Logged in as Administrator</p>
+            <p>Password: oracleA1</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+        }
+
+        function openAdminTab(section) {
+            let content = `<h3>${section.charAt(0).toUpperCase() + section.slice(1)} Section</h3><p>Full functionality available in production version.</p>`;
+            if (section === 'map') content += '<p>🗺️ Live US Map with cargo locations (Demo)</p>';
+            if (section === 'chat') content += '<p>💬 24/7 Live Chat Support Active</p>';
+            document.getElementById('admin-content').innerHTML = content;
+        }
+
+        function trackShipment() {
+            const id = document.getElementById('trackId').value || "FMX-CHI-20260709";
+            document.getElementById('trackResult').innerHTML = `<div style="background:#1e3a8a;padding:20px;border-radius:8px;">Tracking ${id}<br>Status: Out for Delivery in Hemet, CA</div>`;
+        }
+    </script>
+</body>
+</html>
