@@ -3,85 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Femex Shipping - Chicago & Nationwide USA</title>
+    <title>Femex Shipping | Premium Cargo & Logistics USA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f8f9fa; color: #333; }
-        header { background: linear-gradient(135deg, #0d6efd, #003087); color: white; padding: 2rem 1rem; text-align: center; }
-        nav { background: #212529; padding: 1rem; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .hero { text-align: center; padding: 4rem 1rem; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1600x900/?chicago,shipping'); background-size: cover; color: white; }
-        button { padding: 14px 28px; background: #0d6efd; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; }
-        .card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 1rem 0; }
-        footer { background: #212529; color: white; text-align: center; padding: 2rem; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+        header { background: linear-gradient(135deg, #1e40af, #0f172a); padding: 1.5rem; text-align: center; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://source.unsplash.com/random/1920x1080/?cargo,container,ship'); background-size: cover; height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; margin: 1rem 0; border: 1px solid rgba(255,255,255,0.2); }
+        button { padding: 14px 32px; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .admin-panel { display: none; background: #1e2937; padding: 2rem; border-radius: 12px; }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#track">Track</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a href="#admin">Admin Login</a>
-    </nav>
+    <header>
+        <h1>FEMEX SHIPPING</h1>
+        <p>Premium Global Logistics • USA Nationwide</p>
+    </header>
 
     <div class="hero">
-        <h1>FEMEX SHIPPING</h1>
-        <p>Fast • Reliable • Nationwide USA Cargo & Freight</p>
-        <button onclick="document.getElementById('track-section').scrollIntoView()">Track Shipment</button>
+        <div>
+            <h1 style="font-size:3.5rem;">Intelligent Cargo Solutions</h1>
+            <p>Sea • Air • Rail • Road • Holographic Tracking</p>
+            <button onclick="document.getElementById('track').scrollIntoView({behavior:'smooth'})">Track Shipment</button>
+        </div>
     </div>
 
-    <div class="container" id="track-section">
+    <div class="container" id="track">
         <h2>Shipment Tracking</h2>
-        <input type="text" id="trackingId" placeholder="Enter Tracking Number (e.g. FMX-CHI-20260709)" style="width:70%; padding:15px; font-size:1.1rem;">
-        <button onclick="trackShipment()">Track</button>
-        <div id="result" class="card"></div>
+        <input type="text" id="trackId" placeholder="FMX-USA-20260709" style="width:60%;padding:15px;font-size:1.1rem;">
+        <button onclick="track()">Track</button>
+        <div id="trackResult" class="card"></div>
     </div>
 
-    <div class="container" id="services">
-        <h2>Our Services</h2>
-        <div class="card">🚛 Truck • ✈️ Air • 🚂 Rail • 🚢 Ocean • Nationwide Delivery</div>
+    <div class="container">
+        <h2>Transport Modes</h2>
+        <div class="card">🚢 Ocean • ✈️ Air Freight • 🚂 Rail • 🚛 Trucking • Intermodal</div>
     </div>
 
-    <div class="container" id="contact">
-        <h2>Contact & Shipping Address</h2>
-        <p><strong>Pickup / Business Address:</strong> 5160 Rowel St, Hemet, CA 92545</p>
-        <p><strong>Phone:</strong> (707) 780-2078</p>
-        <p>Ready to ship? Call or use the form below.</p>
+    <div class="container">
+        <h2>24/7 Live Chat</h2>
+        <div class="card" id="chat">Customer Service: Hello! How can I help you today?</div>
+        <input type="text" id="chatInput" placeholder="Type message..." style="width:80%;padding:12px;">
+        <button onclick="sendChat()">Send</button>
     </div>
 
-    <div class="container" id="admin">
-        <h2>Admin / Customer Portal</h2>
-        <p><strong>Admin Login</strong></p>
-        <input type="text" id="adminUser" value="admin" placeholder="Username"><br><br>
-        <input type="password" id="adminPass" value="oracleA1" placeholder="Password"><br><br>
-        <button onclick="adminLogin()">Login to Admin Dashboard</button>
-        <p style="font-size:0.9rem; color:#666;">Demo credentials: admin / oracleA1</p>
+    <div class="container">
+        <h2>Admin Control Center</h2>
+        <button onclick="showAdmin()">Open Admin Dashboard</button>
+        <div id="adminPanel" class="admin-panel">
+            <h3>Admin Dashboard (oracleA1)</h3>
+            <p>Shipments • Customers • Routes • Analytics</p>
+            <p style="color:#4ade80;">Logged in as Admin</p>
+        </div>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Femex Shipping USA • Chicago & Nationwide • (707) 780-2078</p>
-    </footer>
 
     <script>
-        function trackShipment() {
-            const id = document.getElementById('trackingId').value || 'FMX-CHI-20260709';
-            document.getElementById('result').innerHTML = `
-                <h3>Tracking: ${id}</h3>
-                <p><strong>Status:</strong> Out for Delivery</p>
-                <p><strong>Location:</strong> Hemet, CA Area</p>
-                <p><strong>ETA:</strong> Today by 6 PM</p>
-                <p>✅ Real-time updates would appear here in full system.</p>
+        function track() {
+            const id = document.getElementById('trackId').value || "FMX-USA-20260709";
+            document.getElementById('trackResult').innerHTML = `
+                <h3>Live Tracking: ${id}</h3>
+                <p>Status: <strong>In Transit - Hemet, CA</strong></p>
+                <p>Next Stop: Chicago Hub</p>
+                <p>ETA: July 10, 2026</p>
             `;
         }
 
-        function adminLogin() {
-            const user = document.getElementById('adminUser').value;
-            const pass = document.getElementById('adminPass').value;
+        function sendChat() {
+            const msg = document.getElementById('chatInput').value;
+            if (msg) alert("💬 Message sent to 24/7 Support: " + msg);
+        }
+
+        function showAdmin() {
+            const pass = prompt("Enter Admin Password:");
             if (pass === "oracleA1") {
-                alert("✅ Login Successful! Welcome to Admin Dashboard (Demo Mode).\n\nYou can view shipments, customers, and manage orders here.");
+                document.getElementById('adminPanel').style.display = 'block';
+                alert("✅ Admin Access Granted");
             } else {
-                alert("❌ Wrong password. Try: oracleA1");
+                alert("❌ Incorrect Password");
             }
         }
     </script>
