@@ -11,14 +11,12 @@
             --dark: #0f172a;
         }
         body { margin:0; font-family: 'Segoe UI', sans-serif; background: #f8fafc; color: #1e2937; }
-        header { background: var(--dark); color: white; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        header { background: var(--dark); color: white; padding: 1rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
         nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 500; }
         .hero { background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://picsum.photos/id/1015/1920/1080'); background-size: cover; color: white; text-align: center; padding: 6rem 1rem; }
-        .section { padding: 3rem 1rem; }
+        .section { padding: 3rem 1rem; max-width: 1280px; margin: 0 auto; }
         .card { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem; margin: 1rem 0; }
-        button { background: var(--primary); color: white; border: none; padding: 12px 28px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        .admin-tab { display: none; }
-        .admin-tab.active { display: block; }
+        button { background: var(--primary); color: white; border: none; padding: 14px 32px; border-radius: 8px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -27,35 +25,56 @@
         <nav>
             <a href="#track">Track</a>
             <a href="#services">Services</a>
-            <a href="#admin" onclick="switchToAdmin()">Admin Portal</a>
+            <a href="#" onclick="switchToAdmin()">Admin Portal</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1 style="font-size: 3.2rem;">Premium Cargo Logistics</h1>
+        <h1 style="font-size: 3.5rem;">Premium Cargo & Logistics</h1>
         <p>Sea • Air • Rail • Trucking • Nationwide USA</p>
+        <button onclick="document.getElementById('track').scrollIntoView({behavior:'smooth'})">Track Your Shipment</button>
     </div>
 
     <div class="section" id="track">
         <div class="card">
             <h2>Shipment Tracking</h2>
-            <input id="trackInput" placeholder="Enter Tracking Number" style="width:70%; padding:15px; font-size:1.1rem;">
+            <input id="trackInput" placeholder="FMX-USA-20260709" style="width:65%; padding:15px; font-size:1.1rem;">
             <button onclick="trackShipment()">Track Now</button>
-            <div id="trackOutput" style="margin-top:20px;"></div>
+            <div id="trackOutput" style="margin-top:20px; min-height:100px;"></div>
         </div>
     </div>
 
-    <!-- Admin Portal -->
-    <div id="adminPortal" style="display:none; background:#0f172a; color:white; min-height:100vh; padding:2rem;">
-        <h2>🔐 Admin Control Center</h2>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button onclick="showAdminSection('dashboard')">Dashboard</button>
-            <button onclick="showAdminSection('shipments')">Shipment Manager</button>
-            <button onclick="showAdminSection('customers')">Customers</button>
-            <button onclick="showAdminSection('map')">Live Map</button>
-            <button onclick="showAdminSection('chat')">Live Chat</button>
-            <button onclick="showAdminSection('reports')">Reports & Analytics</button>
+    <div class="section" id="services">
+        <h2>Our Services</h2>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+            <div class="card">🚢 Ocean Freight</div>
+            <div class="card">✈️ Air Cargo</div>
+            <div class="card">🚛 Trucking</div>
+            <div class="card">🚂 Rail Logistics</div>
         </div>
-        <div id="adminContent" style="margin-top:2rem; background:#1e2937; padding:2rem; border-radius:12px;">
-            <h3>Welcome, Administrator</h3>
+    </div>
 
+    <script>
+        function trackShipment() {
+            const id = document.getElementById('trackInput').value || "FMX-USA-20260709";
+            document.getElementById('trackOutput').innerHTML = `
+                <div style="background:#1e40af;color:white;padding:25px;border-radius:10px;">
+                    <h3>Tracking: ${id}</h3>
+                    <p><strong>Status:</strong> Out for Delivery</p>
+                    <p><strong>Location:</strong> Hemet, CA (Your Address)</p>
+                    <p><strong>ETA:</strong> Today by 6 PM</p>
+                </div>
+            `;
+        }
+
+        function switchToAdmin() {
+            const pass = prompt("Enter Admin Password:");
+            if (pass === "oracleA1") {
+                alert("✅ Admin Dashboard Opened (Demo Mode)\n\nYou can view shipments, customers, live map, reports, etc.");
+            } else {
+                alert("Incorrect. Demo password: oracleA1");
+            }
+        }
+    </script>
+</body>
+</html>
