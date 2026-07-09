@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChicagoShip - Premier Shipping Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">ChicagoShip</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/track">Track</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/book">Book Shipment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4">Fast & Reliable Shipping in Chicago</h1>
+                    <p class="lead">Your trusted partner for all shipping needs across the United States.</p>
+                    <a href="/track" class="btn btn-light btn-lg">Track Your Package</a>
+                    <a href="/book" class="btn btn-warning btn-lg ms-3">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Form -->
+    <section class="py-5">
+        <div class="container">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3>Track Your Shipment</h3>
+                    <form action="/track" method="POST">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="trackingId" placeholder="Enter Tracking Number" required>
+                            <button class="btn btn-primary" type="submit">Track</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>Express Delivery</h5>
+                            <p>Next-day delivery across US.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- More cards -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <p>&copy; 2026 ChicagoShip. All rights reserved. Contact: 707-780-2078 | support@chicagoship.com</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
