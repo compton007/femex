@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Femex Shipping - Chicago</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
+        header { background: #0d6efd; color: white; padding: 3rem 1rem; text-align: center; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; }
+        input { padding: 15px; width: 70%; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; }
+        button { padding: 15px 30px; background: #0d6efd; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+        #result { margin-top: 25px; padding: 20px; background: #e7f3ff; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚚 Femex Shipping Chicago</h1>
+        <p>Reliable Shipments in the Windy City</p>
+    </header>
+    
+    <div class="container">
+        <h2>Track Your Shipment</h2>
+        <input type="text" id="trackingId" placeholder="Enter Tracking ID (e.g. SAMPLE123)" />
+        <button onclick="trackShipment()">Track</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function trackShipment() {
+            const id = document.getElementById('trackingId').value.trim() || 'SAMPLE123';
+            document.getElementById('result').innerHTML = `
+                <h3>Shipment ${id}</h3>
+                <p><strong>Status:</strong> In Transit</p>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p><strong>Estimated Delivery:</strong> Tomorrow by 5 PM</p>
+                <p style="color:green;">✅ Demo Mode - Working!</p>
+            `;
+        }
+    </script>
+</body>
+</html>
