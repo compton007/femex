@@ -3,39 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Femex Shipping - Chicago</title>
+    <title>Femex Shipping - Chicago & Nationwide USA</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
-        header { background: #0d6efd; color: white; padding: 3rem 1rem; text-align: center; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; }
-        input { padding: 15px; width: 70%; font-size: 1.1rem; border: 2px solid #ddd; border-radius: 8px; }
-        button { padding: 15px 30px; background: #0d6efd; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
-        #result { margin-top: 25px; padding: 20px; background: #e7f3ff; border-radius: 10px; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f8f9fa; color: #333; }
+        header { background: linear-gradient(135deg, #0d6efd, #003087); color: white; padding: 2rem 1rem; text-align: center; }
+        nav { background: #212529; padding: 1rem; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .hero { text-align: center; padding: 4rem 1rem; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1600x900/?chicago,shipping'); background-size: cover; color: white; }
+        button { padding: 14px 28px; background: #0d6efd; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 1rem 0; }
+        footer { background: #212529; color: white; text-align: center; padding: 2rem; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🚚 Femex Shipping Chicago</h1>
-        <p>Reliable Shipments in the Windy City</p>
-    </header>
-    
-    <div class="container">
-        <h2>Track Your Shipment</h2>
-        <input type="text" id="trackingId" placeholder="Enter Tracking ID (e.g. SAMPLE123)" />
-        <button onclick="trackShipment()">Track</button>
-        <div id="result"></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#track">Track</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#admin">Admin Login</a>
+    </nav>
+
+    <div class="hero">
+        <h1>FEMEX SHIPPING</h1>
+        <p>Fast • Reliable • Nationwide USA Cargo & Freight</p>
+        <button onclick="document.getElementById('track-section').scrollIntoView()">Track Shipment</button>
     </div>
+
+    <div class="container" id="track-section">
+        <h2>Shipment Tracking</h2>
+        <input type="text" id="trackingId" placeholder="Enter Tracking Number (e.g. FMX-CHI-20260709)" style="width:70%; padding:15px; font-size:1.1rem;">
+        <button onclick="trackShipment()">Track</button>
+        <div id="result" class="card"></div>
+    </div>
+
+    <div class="container" id="services">
+        <h2>Our Services</h2>
+        <div class="card">🚛 Truck • ✈️ Air • 🚂 Rail • 🚢 Ocean • Nationwide Delivery</div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2>Contact & Shipping Address</h2>
+        <p><strong>Pickup / Business Address:</strong> 5160 Rowel St, Hemet, CA 92545</p>
+        <p><strong>Phone:</strong> (707) 780-2078</p>
+        <p>Ready to ship? Call or use the form below.</p>
+    </div>
+
+    <div class="container" id="admin">
+        <h2>Admin / Customer Portal</h2>
+        <p><strong>Admin Login</strong></p>
+        <input type="text" id="adminUser" value="admin" placeholder="Username"><br><br>
+        <input type="password" id="adminPass" value="oracleA1" placeholder="Password"><br><br>
+        <button onclick="adminLogin()">Login to Admin Dashboard</button>
+        <p style="font-size:0.9rem; color:#666;">Demo credentials: admin / oracleA1</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Femex Shipping USA • Chicago & Nationwide • (707) 780-2078</p>
+    </footer>
 
     <script>
         function trackShipment() {
-            const id = document.getElementById('trackingId').value.trim() || 'SAMPLE123';
+            const id = document.getElementById('trackingId').value || 'FMX-CHI-20260709';
             document.getElementById('result').innerHTML = `
-                <h3>Shipment ${id}</h3>
-                <p><strong>Status:</strong> In Transit</p>
-                <p><strong>Location:</strong> Chicago, IL</p>
-                <p><strong>Estimated Delivery:</strong> Tomorrow by 5 PM</p>
-                <p style="color:green;">✅ Demo Mode - Working!</p>
+                <h3>Tracking: ${id}</h3>
+                <p><strong>Status:</strong> Out for Delivery</p>
+                <p><strong>Location:</strong> Hemet, CA Area</p>
+                <p><strong>ETA:</strong> Today by 6 PM</p>
+                <p>✅ Real-time updates would appear here in full system.</p>
             `;
+        }
+
+        function adminLogin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            if (pass === "oracleA1") {
+                alert("✅ Login Successful! Welcome to Admin Dashboard (Demo Mode).\n\nYou can view shipments, customers, and manage orders here.");
+            } else {
+                alert("❌ Wrong password. Try: oracleA1");
+            }
         }
     </script>
 </body>
